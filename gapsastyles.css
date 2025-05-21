@@ -236,184 +236,185 @@ z-index: 90;
 
 
 /* —— Events Page Layout —— */
+/* Events container */
 #events-container {
   display: flex;
   gap: 2rem;
-  flex-wrap: wrap;
-  color: white;
-}
-
-/* Left: Event info */
-#event-info-screen {
-  flex: 2;
-  background: #111;
   padding: 1rem;
-  border-radius: 8px;
-  max-height: 70vh;
-  overflow-y: auto;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#event-info-screen h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  border-bottom: 2px solid #444;
-  padding-bottom: 0.5rem;
+/* Event info screen section */
+#event-info-screen {
+  flex: 1 1 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Event title and date */
+#event-title {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
 }
 
 .event-date {
   font-style: italic;
-  color: #ccc;
-  margin: 0.5rem 0 1rem;
+  margin-bottom: 1rem;
+  color: #555;
 }
 
-.event-description p {
-  margin: 0.75rem 0;
-  line-height: 1.6;
+/* Event description */
+.event-description {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
-/* Photo gallery */
-.photo-gallery {
+/* Gallery container holding main photo and thumbnails */
+#gallery-container {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  background: #fafafa;
+  border-radius: 8px;
+  max-height: 400px;
+}
+
+/* Main photo container */
+#main-photo-container {
+  flex: 1 1 auto;
+  max-width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #eee;
+}
+
+/* Main photo */
+#main-photo {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  user-select: none;
+}
+
+/* Thumbnail gallery: vertical stack on right */
+#thumbnail-gallery {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.photo-gallery .thumb-list {
-  display: flex;
   gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-} 
-
-
-.photo-gallery img {
-  height: 120px;
-  border-radius: 6px;
-  object-fit: cover;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.photo-gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* Right: Event links */
-#event-links {
-  flex: 1;
-  background: #222;
-  padding: 1rem;
-  border-radius: 8px;
-  max-height: 70vh;
+  max-width: 20%;
   overflow-y: auto;
+  max-height: 400px;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Scrollbar styling for WebKit browsers */
+#thumbnail-gallery::-webkit-scrollbar {
+  width: 8px;
+}
+
+#thumbnail-gallery::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+#thumbnail-gallery::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Thumbnail images */
+#thumbnail-gallery img {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+  object-fit: cover;
+  height: 70px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  user-select: none;
+}
+
+/* Selected thumbnail highlight */
+#thumbnail-gallery img.selected {
+  border-color: #007BFF;
+}
+
+/* Event links aside */
+#event-links {
+  flex: 1 1 30%;
+  border-left: 1px solid #ccc;
+  padding-left: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
 }
 
 #event-links h3 {
   margin-top: 0;
-  font-size: 1.2rem;
-  border-bottom: 1px solid #444;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #007BFF;
   padding-bottom: 0.25rem;
 }
 
 .event-link-list {
   list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
+  padding-left: 0;
+  margin-top: 0;
 }
 
 .event-link-list li {
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .event-link-list a {
-  color: #ccc;
   text-decoration: none;
+  color: #007BFF;
+  font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s;
-}
-.event-link-list a:hover,
-.event-link-list a.active {
-  color: #fff;
-  text-decoration: underline;
+  transition: color 0.3s ease;
 }
 
-/* —— Card‐style Shadows & Background —— */
-#event-info-screen,
-#event-links {
-  background-color: #1a1a1a;       /* slightly lighter than pure #111 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-/* —— Headings & Text Styling —— */
-#event-info-screen h2,
-#event-links h3 {
-  color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.event-date {
-  color: #bbb;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-/* —— Description Paragraphs —— */
-.event-description p {
-  color: #ddd;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-/* —— Gallery Enhancements —— */
-.photo-gallery {
-  padding-top: 1rem;
-  border-top: 1px solid #333;
-}
-.photo-gallery img {
-  border: 2px solid #333;
-  border-radius: 8px;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.photo-gallery img:hover {
-  transform: scale(1.08);
-  border-color: #555;
-}
-
-/* Hide scrollbar but keep scrolling */
-.photo-gallery {
-  overflow-x: auto;
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE & Edge */
-}
-
-.photo-gallery::-webkit-scrollbar {
-  display: none;                  /* Chrome, Safari, Opera */
-}
-
-
-/* —— Link List “Cards” —— */
-.event-link-list li {
-  margin: 0.5rem 0;
-}
-.event-link-list a {
-  display: block;
-  padding: 0.6rem 1rem;
-  background-color: #222;
-  border-radius: 6px;
-  transition: background 0.3s, color 0.3s;
-}
 .event-link-list a:hover {
-  background-color: #333;
-  color: #fff;
+  color: #0056b3;
 }
-.event-link-list a.active {
-  background-color: #444;
-  color: #fff;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  #events-container {
+    flex-direction: column;
+  }
+  #event-info-screen,
+  #event-links {
+    max-height: none;
+  }
+  #gallery-container {
+    max-height: none;
+  }
+  #thumbnail-gallery {
+    max-width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: 100px;
+    gap: 0.5rem;
+  }
+  #thumbnail-gallery img {
+    height: 70px;
+    width: auto;
+  }
 }
+
 
 /* —— Scrollbar Styling —— */
 #event-info-screen::-webkit-scrollbar,
@@ -448,4 +449,148 @@ z-index: 90;
     max-height: none;
     margin-top: 1rem;
   }
+}
+
+.donate-section {
+  max-width: 720px;
+  margin: 1.5rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Arial', sans-serif; /* or your site’s font */
+  color: #2a2a2a;
+  line-height: 1.5;
+}
+
+.donate-section h2 {
+  font-size: 2rem;
+  color: #004d40; /* a dark teal for a peaceful, professional vibe */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.donate-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.donation-options {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.donation-option {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+}
+
+.donation-option h3 {
+  color: #00796b; /* lighter teal */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.donation-option img {
+  display: block;
+  max-width: 200px;
+  margin: 0.5rem auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.donation-option ol {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+.donation-option ol li {
+  margin-bottom: 0.5rem;
+}
+
+.donation-option a {
+  color: #00796b;
+  text-decoration: underline;
+}
+
+.btn-paypal {
+  display: inline-block;
+  background-color: #ffc439;
+  color: #111;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-paypal:hover {
+  background-color: #e0b534;
+}
+
+
+/* Base responsive adjustments */
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+
+  #sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background: #333;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  #sidebar.open {
+    transform: translateX(0);
+  }
+
+  #toggle-btn {
+    display: block;
+    background: none;
+    color: white;
+    font-size: 24px;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  #main-area {
+    width: 100%;
+  }
+}
+
+/* Hide toggle button by default */
+#toggle-btn {
+  display: none;
 }
