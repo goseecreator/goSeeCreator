@@ -12,13 +12,27 @@ document.addEventListener("DOMContentLoaded", () => {
       content.classList.remove("fade-out");
       spinner.classList.add("hidden");
     }, 300); // match CSS transition
+
   }
-// Toggle Button
-  document.getElementById("toggle-btn").addEventListener("click", () => {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open");
+  // Toggle Button
+  const toggleBtn = document.getElementById("toggle-btn");
+  const sidebar = document.getElementById("sidebar");
+
+  if (window.innerWidth <= 768) {
+    sidebar.classList.add("collapsed");
+  }
+  
+  toggleBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains("expanded")) {
+      sidebar.classList.remove("expanded");
+      sidebar.classList.add("collapsed");
+    } else {
+      sidebar.classList.add("expanded");
+      sidebar.classList.remove("collapsed");
+    }
   });
   
+
   // ===== HOME SECTION =====
   function loadHomeSection() {
     content.innerHTML = `
@@ -98,7 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
         id: "bridgeatnakivalerefugeecamp",
         title: "Construction of Bridge at Nakivale Refugee Camp, New Hope Village",
         date: "",
-        description: "<p>Nakivale Refugee Camp, located in the Isingiro District of Uganda, serves as a vibrant community for thousands of resilient refugees, predominantly from neighboring countries. Despite facing challenges, the residents demonstrate remarkable strength and resourcefulness, creating a supportive environment and striving for a better future. By donating today, you can empower these children and strengthen their community, ensuring they have the opportunity to thrive and succeed. Together, let’s turn their obstacles into opportunities!</p> <strong>Partnerships</strong> <p>The Kiwanis Club of Nakivale and the Global Alliance for Peace and Solidarity for Africa successfully joined forces to build a bridge, ensuring safe crossings for children and the local community.</p>",
+        description: `
+  <p>Nakivale Refugee Camp, located in the Isingiro District of Uganda, serves as a vibrant community for thousands of resilient refugees, predominantly from neighboring countries. Despite facing challenges, the residents demonstrate remarkable strength and resourcefulness, creating a supportive environment and striving for a better future. By donating today, you can empower these children and strengthen their community, ensuring they have the opportunity to thrive and succeed. Together, let’s turn their obstacles into opportunities!</p>
+  <p><strong>Partnerships</strong></p>
+  <p>The Kiwanis Club of Nakivale and the Global Alliance for Peace and Solidarity for Africa successfully joined forces to build a bridge, ensuring safe crossings for children and the local community.</p>
+`,
         photos: [
           "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/newHopeBridge.jpeg",
           "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/newHopeBridge1.jpeg",
