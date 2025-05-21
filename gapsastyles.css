@@ -2,11 +2,18 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
@@ -47,7 +54,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin: 0;
+  margin-top: 80px;
 }
 
 #toggle-btn {
@@ -169,7 +176,6 @@ footer {
 /* Home section styles */
 .home-banner {
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 .home-image {
@@ -292,9 +298,13 @@ html {
     width: 100%;
     height: auto;
     max-height: 300px;
-    object-fit: cover;
+    object-fit: fill;
     margin: 0 auto;
     border-radius: 6px;
+  }
+  .home-banner {
+    margin-top: 16px;
+
   }
 }
 
@@ -572,7 +582,7 @@ html {
   max-width: 720px;
   margin: 1.5rem auto;
   padding: 1rem 2rem;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   /* or your site’s font */
   color: #2a2a2a;
   line-height: 1.5;
@@ -716,4 +726,46 @@ html {
   #sidebar:not(.expanded) #login-btn {
     display: none;
   }
+}
+
+/* Custom Alert */
+.custom-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  display: none;
+}
+
+.custom-alert button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.custom-alert button:hover {
+  background-color: #0056b3;
+}
+
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }

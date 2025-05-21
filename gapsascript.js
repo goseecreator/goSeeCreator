@@ -298,4 +298,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize to Home on page load
   transitionTo(loadHomeSection);
+
+  document.getElementById('login-btn').addEventListener('click', function () {
+    const alertBox = document.getElementById('custom-alert');
+    const overlay = document.getElementById('custom-alert-overlay');
+    alertBox.style.display = 'block';
+    overlay.style.display = 'block';
+
+    document.getElementById('custom-alert-close').addEventListener('click', function () {
+      alertBox.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+  });
 });
